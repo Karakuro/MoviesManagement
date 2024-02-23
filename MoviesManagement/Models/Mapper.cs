@@ -12,7 +12,8 @@ namespace MoviesManagement.Models
             {
                 Id = entity.EmployeeId,
                 Name = entity.Name,
-                Surname = entity.Surname
+                Surname = entity.Surname,
+                IsDeleted = entity.IsDeleted
             };
 
             return model;
@@ -28,6 +29,7 @@ namespace MoviesManagement.Models
                 AgeLimit = entity.AgeLimit?.Description,
                 DurationMins = entity.DurationMins,
                 ImdbId = entity.ImdbId,
+                IsDeleted = entity.IsDeleted,
                 Technologies = entity.Technologies?.ConvertAll(MapEntityToModel),
                 Projections = entity.Projections?.ConvertAll(MapEntityToModel)
             };
@@ -42,6 +44,7 @@ namespace MoviesManagement.Models
                 FreeBy = entity.FreeBy,
                 Start = entity.Start,
                 RoomId = entity.RoomId,
+                IsDeleted = entity.IsDeleted,
                 RoomName = entity.Room?.Name
             };
             return model;

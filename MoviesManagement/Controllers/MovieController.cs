@@ -79,5 +79,34 @@ namespace MoviesManagement.Controllers
                 return StatusCode(StatusCodes.Status501NotImplemented);
             }
         }
+
+        [HttpDelete]
+        [Route("Disable/{id}")]
+        public IActionResult Archive(int id)
+        {
+            return EnableOrDisable(id, true);
+        }
+
+        [HttpDelete]
+        [Route("Enable/{id}")]
+        public IActionResult Reactivate(int id)
+        {
+            return EnableOrDisable(id, false);
+        }
+
+        private IActionResult EnableOrDisable(int id, bool action)
+        {
+            var movie = _ctx.Movies.Include(m => m.Projections)
+                            .SingleOrDefault(m => m.MovieId == id);
+            if (movie == null)
+                return BadRequest("Impossibile eliminare il film selezionato");
+
+            movie.IsDeleted = action;
+            movie.Projections?.ForEach(p => p.IsDeleted = action);
+
+            _ctx.SaveChanges();
+
+            return Ok();
+        }
     }
 }

@@ -7,5 +7,6 @@
         public string? RoomName { get; set; }
         public DateTime Start { get; set; }
         public DateTime FreeBy { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

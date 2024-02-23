@@ -8,6 +8,7 @@
         public int AgeLimitId { get; set; }
         public int DurationMins { get; set; }
         public AgeLimit? AgeLimit { get; set; }
+        public bool IsDeleted { get; set; } = false;
         public List<Technology>? Technologies { get; set; }
         public List<Projection>? Projections { get; set; }
     }

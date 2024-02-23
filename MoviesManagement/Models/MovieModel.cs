@@ -11,6 +11,7 @@ namespace MoviesManagement.Models
         public int AgeLimitId { get; set; }
         public string? AgeLimit { get; set; }
         public int DurationMins { get; set; }
+        public bool IsDeleted { get; set; }
         public List<ItemModel>? Technologies { get; set; }
         public List<MovieProjectionModel>? Projections { get; set; }
     }
